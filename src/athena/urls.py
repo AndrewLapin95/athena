@@ -16,9 +16,9 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, re_path
 
-from user.views import home
+from user.views import user_listview
 
 urlpatterns = [
     re_path(r'^admin/', admin.site.urls),
-    re_path(r'^$', home)
+    re_path(r'user/', user_listview),
 ]
