@@ -20,5 +20,5 @@ from user.views import user_listview
 
 urlpatterns = [
     re_path(r'^admin/', admin.site.urls),
-    re_path(r'user/', user_listview),
+    re_path(r'profile/', user_listview),
 ]
