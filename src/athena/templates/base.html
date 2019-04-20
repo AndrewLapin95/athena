@@ -11,15 +11,29 @@
     <title>{% block head_title %}Replace this value{% endblock %} Athena</title>
   </head>
   <body>
+      <ul class="nav justify-content-center">
+          <li class="nav-item">
+            <a class="nav-link active" href="/profile">My Profile</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/notifications">Notifications</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/actions">Actions</a>
+          </li>
+          <li class="nav-item">
+              <a class="nav-link" href="/misc">Miscellaneous</a>
+            </li>
+        </ul>
 
-    {% block content %}
-      <h1>Hello World!</h1>
-      
-      <div class='container'>
-          <p>This is a base page!</p>
-      </div>
+        {% block content %}
+          <h1>Hello World!</h1>
+          
+          <div class='container'>
+              <p>This is a base page!</p>
+          </div>
 
-    {% endblock content %}
+        {% endblock content %}
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
