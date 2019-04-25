@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block title %}User Profile{% endblock %}
+
+{% block content %}
+{% if user.is_authenticated %}
+<h1>This is user profile page for {{ user.username }}</h1>
+
+{% for object in object_list %}
+<li>{{ object.first_name }} {{ object.last_name }} {{ object.birthday }} {{ object.phone_number }}</li>
+{% endfor %}
+    <p>
+        <a href="{% url 'logout' %}">Logout</a>
+    </p>
+{% else %}
+
+    <p>You are not logged in</p>
+    <a href="{% url 'login' %}">Login</a>
+
+{% endif %}
+{% endblock %}

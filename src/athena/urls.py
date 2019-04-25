@@ -1,4 +1,4 @@
-"""athena URL Configuration
+"""Athena URL Configuration
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/2.2/topics/http/urls/
@@ -14,17 +14,24 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path, re_path
+from django.urls import path, re_path, include
+from django.views.generic.base import RedirectView
+from django.contrib.auth.views import LoginView, LogoutView
 
-from user.views import user_listview
+from user.views import EmployeeListView
+
 from actions.views import actions_listview
 from notifications.views import notifications_listview
 from miscellaneous.views import misc_listview
 
 urlpatterns = [
-    re_path(r'^admin/', admin.site.urls),
-    re_path(r'profile/', user_listview),
-    re_path(r'actions/', actions_listview),
-    re_path(r'notifications/', notifications_listview),
-    re_path(r'misc/', misc_listview),
+
+    re_path(r'^admin/', admin.site.urls, name="admin"),
+    re_path(r'^login/', LoginView.as_view(), name='login'),
+    re_path(r'^logout/', LogoutView.as_view(), name='logout'),
+    re_path(r'^profile/', EmployeeListView.as_view(), name='home'),
+    re_path(r'^actions/', actions_listview, name="actions"),
+    re_path(r'^notifications/', notifications_listview, name="notifications"),
+    re_path(r'misc/', misc_listview, name="misc"),
+    re_path(r'', RedirectView.as_view(url='/profile/', permanent=True)),
 ]
