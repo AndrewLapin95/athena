@@ -1,3 +1,5 @@
+import logging
+
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.models import User
 from django.views.generic.list import ListView
@@ -19,6 +21,8 @@ class EmployeeListView(LoginRequiredMixin, ListView):
             owner = User.objects.get(username=self.request.user).id
             user_id = Employee.objects.get(owner_id=owner).id
         except Exception as e:
+            logging.warning("Couldn't retreieve the employee set.")
+            logging.warning("The error was: {}".format(str(e)))
             return queryset
 
         if user_id is not None:

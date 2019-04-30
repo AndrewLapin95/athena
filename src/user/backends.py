@@ -1,3 +1,5 @@
+import logging
+
 from user.models import UserProfile
 from django.contrib.auth.models import User
 
@@ -18,8 +20,10 @@ class CustomAuthenticationBackend:
             try:
                 user = User.objects.get(email=username)
             except User.MultipleObjectsReturned:
+                logging.error("Multiple users were returned for {}".format(username))
                 return None
             except User.DoesNotExist:
+                logging.fatal("User with the username {} doesn't exist".format(username))
                 return None
 
         if not user.is_superuser:
