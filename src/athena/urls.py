@@ -19,9 +19,6 @@ from django.views.generic.base import RedirectView
 from django.contrib.auth.views import LoginView, LogoutView
 
 from user.views import EmployeeListView
-from notifications.views import NotificationsListView
-from actions.views import ActionsListView
-from miscellaneous.views import MiscellaneousListView
 
 urlpatterns = [
 
@@ -29,8 +26,5 @@ urlpatterns = [
     re_path(r'^logout/', LogoutView.as_view(), name='logout'),
     re_path(r'^profile/', EmployeeListView.as_view(), name='home'),
     re_path(r'^admin/', admin.site.urls, name='admin'),
-    re_path(r'^actions/', ActionsListView.as_view(), name="actions"),
-    re_path(r'^notifications/', NotificationsListView.as_view(), name="notifications"),
-    re_path(r'^misc/', MiscellaneousListView.as_view(), name="misc"),
     re_path(r'^$', RedirectView.as_view(url='/profile/', permanent=False)),
 ]
