@@ -3,6 +3,19 @@ from django.conf import settings
 
 User = settings.AUTH_USER_MODEL
 
+EMPLOYEE = "EM"
+MANAGER = "HR"
+
+ROLE_CHOICES = (
+    (EMPLOYEE, 'Employee'),
+    (MANAGER, 'Manager'),
+)
+
+class UserProfile(models.Model):
+    user            = models.OneToOneField(User, on_delete=models.CASCADE)
+    role            = models.CharField(default=EMPLOYEE, max_length=2, choices=ROLE_CHOICES)
+    company_alias   = models.CharField(max_length=10, null=False, blank=False)
+
 # Create your models here.
 class Employee(models.Model):
     owner           = models.ForeignKey(User, on_delete=models.CASCADE)

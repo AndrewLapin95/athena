@@ -1,8 +1,12 @@
-from django.shortcuts import render
+from django.views.generic.list import ListView
+from django.contrib.auth.mixins import LoginRequiredMixin
 
+from .models import Misc
 # Create your views here.
 
-def misc_listview(request):
-    template_name = "miscellaneous/miscellaneous.html"
-    context = {}
-    return render(request, template_name, context)
+class MiscellaneousListView(LoginRequiredMixin, ListView):
+
+    def get_queryset(self):
+        queryset = Misc.objects.none()
+
+        return queryset

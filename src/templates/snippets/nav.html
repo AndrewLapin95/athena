@@ -1,0 +1,16 @@
+{% if request.user.is_authenticated %}
+<ul class="nav justify-content-center">
+    <li class="nav-item">
+        <a class="nav-link active" href="{% url 'home' %}">My Profile</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="{% url 'notifications' %}">Notifications</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="{% url 'actions' %}">Actions</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="{% url 'misc' %}">Miscellaneous</a>
+    </li>
+</ul>
+{% endif %}
