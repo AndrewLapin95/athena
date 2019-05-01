@@ -1,7 +1,22 @@
 {% if request.user.is_authenticated %}
-<ul class="nav justify-content-center">
-    <li class="nav-item">
-        <a class="nav-link active" href="{% url 'home' %}">My Profile</a>
-    </li>
-</ul>
+{% load static %}
+<link rel="stylesheet" href="{% static 'style.css' %}">
+<nav class="navbar navbar-landing navbar-expand-lg navbar-dark bg-dark">
+<div class="container">
+ <a class="navbar-brand mx-auto" href="#">Athena</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar1">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="navbar-inner collapse navbar-collapse" id="navbar1">
+    <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+            <a class="nav-link page-scroll" href="#intro">Help</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link page-scroll" href="#intro">Sign In</a>
+        </li>
+    </ul>
+  </div>
+</div> <!-- container //  -->
+</nav>
 {% endif %}
