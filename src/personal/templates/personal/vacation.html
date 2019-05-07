@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+
+{% block title %}Vacation{% endblock %}
+
+{% block content %}
+{% if user.is_authenticated %}
+
+<h1>This is vacation page</h1>
+
+{% endif %}
+{% endblock %}
