@@ -6,7 +6,7 @@
 {% if user.is_authenticated %}
 
 <div class="d-sm-flex align-items-center justify-content-between mb-4">
-    <h1 class="h3 mb-0 text-gray-800">Profile</h1>
+    <h1 class="h3 mb-0 text-gray-800">Employee Profile</h1>
     <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>
 </div>
 
@@ -17,11 +17,36 @@
         <div class="card shadow mb-4">
         <!-- Card Header - Dropdown -->
             <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                <h6 class="m-0 font-weight-bold text-primary">Earnings Overview</h6>
+                <h6 class="m-0 font-weight-bold text-primary">Personal Information</h6>
             </div>
             <!-- Card Body -->
             <div class="card-body">
-                <p>Hello world</p>
+                <div class="container mb-4">
+                    <h6 class="row mb-2">
+                        <span class="h6 font-weight-bold text-gray-700 col-xl-4">Employee ID:</span>
+                        <span class="col text-break">1</span>
+                    </h6>
+                    <div class="dropdown-divider"></div>
+                    <h6 class="row mb-2">
+                        <span class="h6 font-weight-bold text-gray-700 col-xl-4">Full Name:</span>
+                        <span class="col text-break">Andrew Lapin</span>
+                    </h6>
+                    <div class="dropdown-divider"></div>
+                    <h6 class="row mb-2">
+                        <span class="h6 font-weight-bold text-gray-700 col-xl-4">Address:</span>
+                        <span class="col text-break">7 Kenaston Gardens, North York, ON, M2K 1G7</span>
+                    </h6>
+                    <div class="dropdown-divider"></div>
+                    <h6 class="row mb-2">
+                        <span class="h6 font-weight-bold text-gray-700 col-xl-4">Home Phone:</span>
+                        <span class="col text-break"></span>
+                    </h6>
+                    <div class="dropdown-divider"></div>
+                    <h6 class="row mb-2">
+                        <span class="h6 font-weight-bold text-gray-700 col-xl-4">Cell Phone:</span>
+                        <span class="col text-break">+1 (647) 936-2729</span>
+                    </h6>
+                </div>
             </div>
         </div>
     </div>
@@ -31,28 +56,71 @@
         <div class="card shadow mb-4">
         <!-- Card Header - Dropdown -->
             <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                <h6 class="m-0 font-weight-bold text-primary">Earnings Overview</h6>
+                <h6 class="m-0 font-weight-bold text-primary">Emergency Contact</h6>
             </div>
             <!-- Card Body -->
             <div class="card-body">
-                <p>Hello world</p>
+                <div class="container">
+                    <h6 class="row mb-2">
+                        <span class="h6 font-weight-bold text-gray-700 col-xl-4">Full Name:</span>
+                        <span class="col text-break">Emily Wang</span>
+                    </h6>
+                    <div class="dropdown-divider"></div>
+                    <h6 class="row mb-2">
+                        <span class="h6 font-weight-bold text-gray-700 col-xl-4">Cell Phone:</span>
+                        <span class="col text-break">+1 (647) 936-2729</span>
+                    </h6>
+                </div>
             </div>
         </div>
     </div>
 </div>
 
 <div class="row">
-
-    <!-- Area Chart -->
     <div class="col-xl-6 col-lg-5">
         <div class="card shadow mb-4">
         <!-- Card Header - Dropdown -->
             <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                <h6 class="m-0 font-weight-bold text-primary">Earnings Overview</h6>
+                <h6 class="m-0 font-weight-bold text-primary">Employment Information</h6>
             </div>
             <!-- Card Body -->
             <div class="card-body">
-                <p>Hello world</p>
+                <div class="container">
+                    <h6 class="row mb-2">
+                        <span class="h6 font-weight-bold text-gray-700 col-xl-4">Status:</span>
+                        <span class="col text-break">Active</span>
+                    </h6>
+                    <div class="dropdown-divider"></div>
+                    <h6 class="row mb-2">
+                        <span class="h6 font-weight-bold text-gray-700 col-xl-4">Location:</span>
+                        <span class="col text-break">CWI Toronto</span>
+                    </h6>
+                    <div class="dropdown-divider"></div>
+                    <h6 class="row mb-2">
+                        <span class="h6 font-weight-bold text-gray-700 col-xl-4">Position Title:</span>
+                        <span class="col text-break"> Co-op - Student</span>
+                    </h6>
+                    <div class="dropdown-divider"></div>
+                    <h6 class="row mb-2">
+                        <span class="h6 font-weight-bold text-gray-700 col-xl-4">Department:</span>
+                        <span class="col text-break">Co-op - 1</span>
+                    </h6>
+                    <div class="dropdown-divider"></div>
+                    <h6 class="row mb-2">
+                        <span class="h6 font-weight-bold text-gray-700 col-xl-4">Manager:</span>
+                        <span class="col text-break">Bobby Smith</span>
+                    </h6>
+                    <div class="dropdown-divider"></div>
+                    <h6 class="row mb-2">
+                        <span class="h6 font-weight-bold text-gray-700 col-xl-4">Original Hire Date:</span>
+                        <span class="col text-break">5/7/2018</span>
+                    </h6>
+                    <div class="dropdown-divider"></div>
+                    <h6 class="row mb-2">
+                        <span class="h6 font-weight-bold text-gray-700 col-xl-4">First Day Worked:</span>
+                        <span class="col text-break">5/7/2018</span>
+                    </h6>
+                </div>
             </div>
         </div>
     </div>
@@ -62,11 +130,52 @@
         <div class="card shadow mb-4">
         <!-- Card Header - Dropdown -->
             <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                <h6 class="m-0 font-weight-bold text-primary">Earnings Overview</h6>
+                <h6 class="m-0 font-weight-bold text-primary">Pay Information</h6>
             </div>
             <!-- Card Body -->
+            <!-- Card Body -->
             <div class="card-body">
-                <p>Hello world</p>
+                <div class="container">
+                    <h6 class="row mb-2">
+                        <span class="h6 font-weight-bold text-gray-700 col-xl-4">Pay Class:</span>
+                        <span class="col text-break">Co-op</span>
+                    </h6>
+                    <div class="dropdown-divider"></div>
+                    <h6 class="row mb-2">
+                        <span class="h6 font-weight-bold text-gray-700 col-xl-4">Pay Type:</span>
+                        <span class="col text-break">Salaried</span>
+                    </h6>
+                    <div class="dropdown-divider"></div>
+                    <h6 class="row mb-2">
+                        <span class="h6 font-weight-bold text-gray-700 col-xl-4">Employment Indicator:</span>
+                        <span class="col text-break"></span>
+                    </h6>
+                    <div class="dropdown-divider"></div>
+                    <h6 class="row mb-2">
+                        <span class="h6 font-weight-bold text-gray-700 col-xl-4">Pay Frequency:</span>
+                        <span class="col text-break">Monthly</span>
+                    </h6>
+                    <div class="dropdown-divider"></div>
+                    <h6 class="row mb-2">
+                        <span class="h6 font-weight-bold text-gray-700 col-xl-4">Annual Salary:</span>
+                        <span class="col text-break">$36,400.00</span>
+                    </h6>
+                    <div class="dropdown-divider"></div>
+                    <h6 class="row mb-2">
+                        <span class="h6 font-weight-bold text-gray-700 col-xl-4">Position Term:</span>
+                        <span class="col text-break">Regular</span>
+                    </h6>
+                    <div class="dropdown-divider"></div>
+                    <h6 class="row mb-2">
+                        <span class="h6 font-weight-bold text-gray-700 col-xl-4">Effective Date:</span>
+                        <span class="col text-break">5/7/2018</span>
+                    </h6>
+                    <div class="dropdown-divider"></div>
+                    <h6 class="row mb-2">
+                        <span class="h6 font-weight-bold text-gray-700 col-xl-4">Full Time Equivalent:</span>
+                        <span class="col text-break"></span>
+                    </h6>
+                </div>
             </div>
         </div>
     </div>

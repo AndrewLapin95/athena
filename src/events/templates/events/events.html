@@ -5,7 +5,24 @@
 {% block content %}
 {% if user.is_authenticated %}
 
-<h1>This is events page</h1>
+<div class="d-sm-flex align-items-center justify-content-between mb-4">
+    <h1 class="h3 mb-0 text-gray-800">My Events</h1>
+</div>
+
+<div class="row">
+
+    <!-- Area Chart -->
+    <div class="col-x col-lg">
+        <div class="card shadow mb-4">
+        <!-- Card Header - Dropdown -->
+            <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                <h6 class="m-0 font-weight-bold text-primary">Personal Information</h6>
+            </div>
+            <div class="card-body">
+            
+            </div>
+    </div>
+</div>
 
 {% endif %}
 {% endblock %}
