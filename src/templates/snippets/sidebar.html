@@ -1,65 +1,55 @@
 {% if request.user.is_authenticated %}
-{% load static %}
 <!-- Sidebar -->
-    <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
-
-      <!-- Sidebar - Brand -->
-      <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
-        <div class="sidebar-brand-icon rotate-n-15">
-          <i class="fal fa-feather"></i>
+<div class="sidebar" id="sidebar">
+    <div class="sidebar-inner slimscroll">
+        <div id="sidebar-menu" class="sidebar-menu">
+            <ul>
+                <li class="active">
+                    <a href="index.html"><i class="la la-user"></i> <span>Profile</span></a>
+                </li>
+                <li class="submenu">
+                    <a href="#" class="noti-dot"><i class="la la-group"></i> <span> Employees</span> <span class="menu-arrow"></span></a>
+                    <ul style="display: none;">
+                        <li><a href="employees.html">All Employees</a></li>
+                        <li><a href="holidays.html">Holidays</a></li>
+                        <li><a href="departments.html">Departments</a></li>
+                        <li><a href="designations.html">Designations</a></li>
+                    </ul>
+                </li>
+                <li class="submenu">
+                    <a href="#"><i class="la la-files-o"></i> <span> Accounts </span> <span class="menu-arrow"></span></a>
+                    <ul style="display: none;">
+                        <li><a href="invoices.html">Invoices</a></li>
+                        <li><a href="payments.html">Payments</a></li>
+                        <li><a href="expenses.html">Expenses</a></li>
+                        <li><a href="taxes.html">Taxes</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="salary.html"><i class="la la-money"></i> <span>Employee Salary</span> </a>
+                </li>
+                <li class="submenu">
+                    <a href="#"><i class="la la-building"></i> <span> Jobs </span> <span class="menu-arrow"></span></a>
+                    <ul style="display: none;">
+                        <li><a href="jobs.html"> Manage Jobs </a></li>
+                        <li><a href="job-applicants.html"> Applied Candidates </a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="vacations.html"><i class="la la-plane"></i> <span>Vacations</span></a>
+                </li>
+                <li>
+                    <a href="activities.html"><i class="la la-bell"></i> <span>Activities</span></a>
+                </li>
+                <li>
+                    <a href="users.html"><i class="la la-user-plus"></i> <span>Users</span></a>
+                </li>
+                <li>
+                    <a href="settings.html"><i class="la la-cog"></i> <span>Settings</span></a>
+                </li>
+            </ul>
         </div>
-        <div class="sidebar-brand-text mx-3">Athena</div>
-      </a>
-
-      <!-- Divider -->
-      <hr class="sidebar-divider my-0">
-
-      <!-- Nav Item - Pages Collapse Menu -->
-      <li class="nav-item">
-        <a class="nav-link" href="/profile">
-          <i class="fas fa-user-alt"></i>
-          <span>Profile</span>
-        </a>
-      </li>
-
-      <!-- Nav Item - Utilities Collapse Menu -->
-      <li class="nav-item">
-        <a class="nav-link" href="/vacation">
-          <i class="fas fa-island-tropical"></i>
-          <span>Vacation</span>
-        </a>
-      </li>
-
-      <!-- Nav Item - Pages Collapse Menu -->
-      <li class="nav-item">
-        <a class="nav-link" href="/documents">
-          <i class="fas fa-fw fa-folder"></i>
-          <span>Documents</span>
-        </a>
-      </li>
-
-      <!-- Nav Item - Charts -->
-      <li class="nav-item">
-        <a class="nav-link" href="/earnings">
-          <i class="fas fa-money-bill-wave"></i>
-          <span>Earnings</span></a>
-      </li>
-
-      <!-- Nav Item - Tables -->
-      <li class="nav-item">
-        <a class="nav-link" href="/events">
-          <i class="fas fa-fw fa-table"></i>
-          <span>Events</span></a>
-      </li>
-
-      <!-- Divider -->
-      <hr class="sidebar-divider d-none d-md-block">
-
-      <!-- Sidebar Toggler (Sidebar) -->
-      <div class="text-center d-none d-md-inline">
-        <button class="rounded-circle border-0" id="sidebarToggle"></button>
-      </div>
-
-    </ul>
-    <!-- End of Sidebar -->
+    </div>
+</div>
+<!-- /Sidebar -->
 {% endif %}
