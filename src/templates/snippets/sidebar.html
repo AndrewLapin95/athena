@@ -5,47 +5,48 @@
         <div id="sidebar-menu" class="sidebar-menu">
             <ul>
                 <li class="active">
-                    <a href="index.html"><i class="la la-user"></i> <span>Profile</span></a>
+                    <a href="{% url "home" %}"><i class="la la-user"></i> <span>Profile</span></a>
                 </li>
                 <li class="submenu">
-                    <a href="#" class="noti-dot"><i class="la la-group"></i> <span> Employees</span> <span class="menu-arrow"></span></a>
+                    <a href="#"><i class="la la-group"></i> <span> Employees</span> <span class="menu-arrow"></span></a>
                     <ul style="display: none;">
-                        <li><a href="employees.html">All Employees</a></li>
-                        <li><a href="holidays.html">Holidays</a></li>
-                        <li><a href="departments.html">Departments</a></li>
-                        <li><a href="designations.html">Designations</a></li>
+                        <li><a href="{% url "employees" %}">All Employees</a></li>
+                        <li><a href="{% url "departments" %}">Departments</a></li>
+                        <li><a href="{% url "designations" %}">Designations</a></li>
                     </ul>
                 </li>
                 <li class="submenu">
                     <a href="#"><i class="la la-files-o"></i> <span> Accounts </span> <span class="menu-arrow"></span></a>
                     <ul style="display: none;">
-                        <li><a href="invoices.html">Invoices</a></li>
-                        <li><a href="payments.html">Payments</a></li>
-                        <li><a href="expenses.html">Expenses</a></li>
-                        <li><a href="taxes.html">Taxes</a></li>
+                        <li><a href="{% url "invoices" %}">Invoices</a></li>
+                        <li><a href="{% url "payments" %}">Payments</a></li>
+                        <li><a href="{% url "expenses" %}">Expenses</a></li>
+                        <li><a href="{% url "taxes" %}">Taxes</a></li>
                     </ul>
                 </li>
                 <li>
-                    <a href="salary.html"><i class="la la-money"></i> <span>Employee Salary</span> </a>
+                    <a href="{% url "salary" %}"><i class="la la-money"></i> <span>Employee Salary</span> </a>
                 </li>
                 <li class="submenu">
                     <a href="#"><i class="la la-building"></i> <span> Jobs </span> <span class="menu-arrow"></span></a>
                     <ul style="display: none;">
-                        <li><a href="jobs.html"> Manage Jobs </a></li>
-                        <li><a href="job-applicants.html"> Applied Candidates </a></li>
+                        <li><a href="{% url "jobs" %}"> Manage Jobs </a></li>
+                        <li><a href="{% url "candidates" %}"> Applied Candidates </a></li>
                     </ul>
                 </li>
                 <li>
-                    <a href="vacations.html"><i class="la la-plane"></i> <span>Vacations</span></a>
+                    <a href="{% url "holidays" %}"><i class="la la-plane"></i> <span>Holidays</span></a>
                 </li>
                 <li>
-                    <a href="activities.html"><i class="la la-bell"></i> <span>Activities</span></a>
+                    <a href="{% url "activities" %}"><i class="la la-bell"></i> <span>Activities</span></a>
                 </li>
-                <li>
-                    <a href="users.html"><i class="la la-user-plus"></i> <span>Users</span></a>
-                </li>
-                <li>
-                    <a href="settings.html"><i class="la la-cog"></i> <span>Settings</span></a>
+                <li class="submenu">
+                    <a href="#"><i class="la la-files-o"></i> <span> Settings </span> <span class="menu-arrow"></span></a>
+                    <ul style="display: none;">
+                        <li><a href="{% url "settings" %}">Company Settings</a></li>
+                        <li><a href="{% url "roles" %}">Roles and Permissions</a></li>
+                        <li><a href="{% url "password" %}">Change Password</a></li>
+                    </ul>
                 </li>
             </ul>
         </div>
