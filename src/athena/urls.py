@@ -14,6 +14,15 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from user.views import EmployeeListView
+from employees.views import employees_listview, departments_listview, designations_listview
+from accounts.views import invoices_listview, expenses_listview, payments_listview, taxes_listview
+from salary.views import salary_listview
+from jobs.views import jobs_listview, candidates_listview
+from vacations.views import  holidays_listview
+from activities.views import activities_listview
+from settings.views import settings_listview
+from settings.views import roles_listview
+from settings.views import password_listview
 
 from django.contrib import admin
 from django.urls import re_path
@@ -21,9 +30,24 @@ from django.views.generic.base import RedirectView
 from django.contrib.auth.views import LoginView, LogoutView
 
 urlpatterns = [
-    re_path(r'^login/', LoginView.as_view(), name='login'),
-    re_path(r'^logout/', LogoutView.as_view(), name='logout'),
-    re_path(r'^profile/', EmployeeListView.as_view(), name='home'),
-    re_path(r'^admin/', admin.site.urls, name='admin'),
+    re_path(r'^login', LoginView.as_view(), name='login'),
+    re_path(r'^logout', LogoutView.as_view(), name='logout'),
+    re_path(r'^profile', EmployeeListView.as_view(), name='home'),
+    re_path(r'^employees', employees_listview, name='employees'),
+    re_path(r'^holidays', holidays_listview, name='holidays'),
+    re_path(r'^departments', departments_listview, name='departments'),
+    re_path(r'^designations', designations_listview, name='designations'),
+    re_path(r'^invoices', invoices_listview, name='invoices'),
+    re_path(r'^expenses', expenses_listview, name='expenses'),
+    re_path(r'^payments', payments_listview, name='payments'),
+    re_path(r'^salary', salary_listview, name='salary'),
+    re_path(r'^jobs', jobs_listview, name='jobs'),
+    re_path(r'^candidates', candidates_listview, name='candidates'),
+    re_path(r'^activities', activities_listview, name='activities'),
+    re_path(r'^settings', settings_listview, name='settings'),
+    re_path(r'^password', password_listview, name='password'),
+    re_path(r'^roles', roles_listview, name='roles'),
+    re_path(r'^taxes', taxes_listview, name='taxes'),
+    re_path(r'^admin', admin.site.urls, name='admin'),
     re_path(r'^$', RedirectView.as_view(url='/profile/', permanent=False)),
 ]
