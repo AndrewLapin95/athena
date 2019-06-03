@@ -4,17 +4,6 @@
     <div class="sidebar-inner slimscroll">
         <div id="sidebar-menu" class="sidebar-menu">
             <ul>
-                <li class="active">
-                    <a href="{% url "home" %}"><i class="la la-user"></i> <span>Profile</span></a>
-                </li>
-                <li class="submenu">
-                    <a href="#"><i class="la la-group"></i> <span> Employees</span> <span class="menu-arrow"></span></a>
-                    <ul style="display: none;">
-                        <li><a href="{% url "employees" %}">All Employees</a></li>
-                        <li><a href="{% url "departments" %}">Departments</a></li>
-                        <li><a href="{% url "designations" %}">Designations</a></li>
-                    </ul>
-                </li>
                 <li class="submenu">
                     <a href="#"><i class="la la-files-o"></i> <span> Accounts </span> <span class="menu-arrow"></span></a>
                     <ul style="display: none;">
@@ -22,6 +11,14 @@
                         <li><a href="{% url "payments" %}">Payments</a></li>
                         <li><a href="{% url "expenses" %}">Expenses</a></li>
                         <li><a href="{% url "taxes" %}">Taxes</a></li>
+                    </ul>
+                </li>
+                <li class="submenu">
+                    <a href="#"><i class="la la-group"></i> <span> Employees</span> <span class="menu-arrow"></span></a>
+                    <ul style="display: none;">
+                        <li><a href="{% url "employees" %}">All Employees</a></li>
+                        <li><a href="{% url "departments" %}">Departments</a></li>
+                        <li><a href="{% url "designations" %}">Designations</a></li>
                     </ul>
                 </li>
                 <li>
@@ -35,7 +32,10 @@
                     </ul>
                 </li>
                 <li>
-                    <a href="{% url "holidays" %}"><i class="la la-plane"></i> <span>Holidays</span></a>
+                    <a href="{% url "holidays" %}"><i class="la la-hotel"></i> <span>List of Holidays</span></a>
+                </li>
+                <li>
+                    <a href="{% url "home" %}"><i class="la la-user"></i> <span>Profile</span></a>
                 </li>
                 <li class="submenu">
                     <a href="#"><i class="la la-files-o"></i> <span> Settings </span> <span class="menu-arrow"></span></a>
@@ -44,6 +44,9 @@
                         <li><a href="{% url "roles" %}">Roles and Permissions</a></li>
                         <li><a href="{% url "password" %}">Change Password</a></li>
                     </ul>
+                </li>
+                <li>
+                    <a href="{% url "vacation" %}"><i class="la la-plane"></i> <span>Vacation Request</span></a>
                 </li>
             </ul>
         </div>
