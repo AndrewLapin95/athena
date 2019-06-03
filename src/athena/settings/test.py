@@ -47,7 +47,6 @@ INSTALLED_APPS = [
     'salary',
     'jobs',
     'vacations',
-    'activities',
     'settings',
 ]
 

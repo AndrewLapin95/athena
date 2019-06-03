@@ -19,7 +19,6 @@ from accounts.views import invoices_listview, expenses_listview, payments_listvi
 from salary.views import salary_listview
 from jobs.views import jobs_listview, candidates_listview
 from vacations.views import  holidays_listview
-from activities.views import activities_listview
 from settings.views import settings_listview
 from settings.views import roles_listview
 from settings.views import password_listview
@@ -43,7 +42,6 @@ urlpatterns = [
     re_path(r'^salary', salary_listview, name='salary'),
     re_path(r'^jobs', jobs_listview, name='jobs'),
     re_path(r'^candidates', candidates_listview, name='candidates'),
-    re_path(r'^activities', activities_listview, name='activities'),
     re_path(r'^settings', settings_listview, name='settings'),
     re_path(r'^password', password_listview, name='password'),
     re_path(r'^roles', roles_listview, name='roles'),
