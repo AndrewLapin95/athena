@@ -137,8 +137,8 @@ STATICFILES_DIRS = [
 ]
 
 # Redirect URL upon successful login
-LOGIN_REDIRECT_URL = 'home'
-LOGOUT_REDIRECT_URL = 'home'
+LOGIN_REDIRECT_URL = 'redirect'
+LOGOUT_REDIRECT_URL = 'login'
 
 AUTHENTICATION_BACKENDS = [
     'user.backends.CustomAuthenticationBackend',

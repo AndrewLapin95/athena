@@ -1,4 +1,11 @@
-{% extends "base.html" %} {% block title %}User Profile{% endblock %} {% block content %} {% if user.is_authenticated %} {% load static %}
+{% extends "base.html" %} 
+
+{% block title %}User Profile{% endblock %} 
+
+{% block content %} 
+
+{% load static %}
+
 <!-- Page Wrapper -->
 <div class="page-wrapper">
     <!-- Page Content -->
@@ -20,47 +27,34 @@
                             <div class="row">
                                 <div class="col-md-5">
                                     <div class="profile-info-left">
-                                        <h3 class="user-name m-t-0 mb-0">John Doe</h3>
+                                        <h3 class="user-name m-t-0 mb-0">{{ object.first_name }} {{ object.last_name }}</h3>
                                         <h6 class="text-muted">UI/UX Design Team</h6>
-                                        <small class="text-muted">Web Designer</small>
-                                        <div class="staff-id">Employee ID : FT-0001</div>
-                                        <div class="small doj text-muted">Date of Join : 1st Jan 2013</div>
+                                        <small class="text-muted">{{ object.job_title }}</small>
+                                        <div class="staff-id">Employee Username: {{ user.username }}</div>
+                                        <div class="small doj text-muted">Date of Join : {{ object.date_of_join }}</div>
                                     </div>
                                 </div>
                                 <div class="col-md-7">
                                     <ul class="personal-info">
                                         <li>
                                             <div class="title">Phone:</div>
-                                            <div class="text"><a href="">9876543210</a></div>
+                                            <div class="text"><a href="">{{ object.phone_number }}</a></div>
                                         </li>
                                         <li>
                                             <div class="title">Email:</div>
-                                            <div class="text"><a href="">johndoe@example.com</a></div>
+                                            <div class="text"><a href="">{{ object.email }}</a></div>
                                         </li>
                                         <li>
                                             <div class="title">Birthday:</div>
-                                            <div class="text">24th July</div>
+                                            <div class="text">{{ object.birthday }}</div>
                                         </li>
                                         <li>
                                             <div class="title">Address:</div>
-                                            <div class="text">1861 Bayonne Ave, Manchester Township, NJ, 08759</div>
+                                            <div class="text">{{ object.address }}</div>
                                         </li>
                                         <li>
                                             <div class="title">Gender:</div>
-                                            <div class="text">Male</div>
-                                        </li>
-                                        <li>
-                                            <div class="title">Reports to:</div>
-                                            <div class="text">
-                                                <div class="avatar-box">
-                                                    <div class="avatar avatar-xs">
-                                                        <img src="{% static "img/profiles/avatar-16.jpg" %}" alt="">
-                                                    </div>
-                                                </div>
-                                                <a href="profile.html">
-																Jeffery Lalor
-												`</a>
-                                            </div>
+                                            <div class="text">{{ object.gender }}</div>
                                         </li>
                                     </ul>
                                 </div>
@@ -83,19 +77,15 @@
                             <ul class="personal-info">
                                 <li>
                                     <div class="title">Bank name</div>
-                                    <div class="text">ICICI Bank</div>
+                                    <div class="text">{{ object.bank_information.bank_name }}</div>
                                 </li>
                                 <li>
                                     <div class="title">Bank account No.</div>
-                                    <div class="text">159843014641</div>
+                                    <div class="text">{{ object.bank_information.bank_account_number }}</div>
                                 </li>
                                 <li>
                                     <div class="title">IFSC Code</div>
-                                    <div class="text">ICI24504</div>
-                                </li>
-                                <li>
-                                    <div class="title">PAN No</div>
-                                    <div class="text">TC000Y56</div>
+                                    <div class="text">{{ object.bank_information.swift_code }}</div>
                                 </li>
                             </ul>
                         </div>
@@ -431,6 +421,7 @@
         </div>
     </div>
     <!-- /Page Content -->
+
     <!-- Profile Modal -->
     <div id="profile_info" class="modal custom-modal fade" role="dialog">
         <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
@@ -445,13 +436,6 @@
                     <form>
                         <div class="row">
                             <div class="col-md-12">
-                                <div class="profile-img-wrap edit-img">
-                                    <img class="inline-block" src="assets/img/profiles/avatar-02.jpg" alt="user">
-                                    <div class="fileupload btn">
-                                        <span class="btn-text">edit</span>
-                                        <input class="upload" type="file">
-                                    </div>
-                                </div>
                                 <div class="row">
                                     <div class="col-md-6">
                                         <div class="form-group">
@@ -538,17 +522,7 @@
 												</select>
                                 </div>
                             </div>
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label>Reports To <span class="text-danger">*</span></label>
-                                    <select class="select">
-													<option>-</option>
-													<option>Wilmer Deluna</option>
-													<option>Lesley Grauer</option>
-													<option>Jeffery Lalor</option>
-												</select>
-                                </div>
-                            </div>
+
                         </div>
                         <div class="submit-section">
                             <button class="btn btn-primary submit-btn">Submit</button>
@@ -1027,15 +1001,4 @@
     </div>
     <!-- /Experience Modal -->
 
-    <h1>This is user profile page for {{ user.username }}</h1>
-
-    {% for object in object_list %}
-    <li>{{ object.first_name }} {{ object.last_name }} {{ object.birthday }} {{ object.phone_number }}</li>
-    {% endfor %}
-    <p>
-        <a href="{% url 'logout' %}">Logout</a>
-    </p>
-    {% else %}
-
-    <p>You are not logged in</p>
-    <a href="{% url 'login' %}">Login</a> {% endif %} {% endblock %}
+{% endblock %}
