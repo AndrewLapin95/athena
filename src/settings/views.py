@@ -7,11 +7,6 @@ def settings_listview(request):
     context = {}
     return render(request, template_name, context)
 
-def roles_listview(request):
-    template_name = "roles_list.html"
-    context = {}
-    return render(request, template_name, context)
-
 def password_listview(request):
     template_name = "password_list.html"
     context = {}
