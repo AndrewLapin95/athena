@@ -4,8 +4,8 @@ from django.conf import settings
 USER = settings.AUTH_USER_MODEL
 
 USER_TYPES = (
-    (1, "employee"),
-    (2, "manager")
+    ("EMPLOYEE", "employee"),
+    ("MANAGER", "manager")
 )
 
 JOB_TITLES = (
@@ -14,6 +14,13 @@ JOB_TITLES = (
     ("DevOps Engineer", "DEVOPS"),
     ("UX Designer", "UX"),
     ("Intern", "INTERN")
+)
+
+TEAMS = (
+    ("UI/UX Design Team", "UX_TEAM"),
+    ("Backend Architecture", "BACKEND_TEAM"),
+    ("Front-End Development Team", "FRONTEND_TEAM"),
+    ("DevOps", "DEVOPS_TEAM"),
 )
 
 GENDER = (
@@ -29,7 +36,7 @@ class UserProfile(models.Model):
     User profile class. Adds role and company role to the user field
     """
     user = models.OneToOneField(USER, on_delete=models.CASCADE)
-    role = models.PositiveSmallIntegerField(default=1, choices=USER_TYPES)
+    role = models.CharField(max_length=20, choices=USER_TYPES)
     company_alias = models.CharField(max_length=10, null=False, blank=False)
 
 class BankInformation(models.Model):
@@ -51,9 +58,9 @@ class Employee(models.Model):
     job_title = models.CharField(max_length=20, choices=JOB_TITLES)
     birthday = models.DateField(null=True, blank=True)
     gender = models.CharField(max_length=20, choices=GENDER)
+    team = models.CharField(max_length=20, choices=TEAMS)
     date_of_join = models.DateField(null=True, blank=True)
     phone_number = models.CharField(max_length=120, null=True, blank=True)
     address = models.CharField(max_length=120, null=True, blank=True)
     email = models.CharField(max_length=120, null=True, blank=True)
     bank_information = models.OneToOneField(BankInformation, on_delete=models.CASCADE)
-    
