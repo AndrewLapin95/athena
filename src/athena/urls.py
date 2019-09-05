@@ -30,8 +30,8 @@ from django.contrib.auth.views import LoginView, LogoutView
 urlpatterns = [
     re_path(r'^login', LoginView.as_view(), name='login'),
     re_path(r'^logout', LogoutView.as_view(), name='logout'),
-
     re_path(r'^profile/(?P<username>[\w-]+)', EmployeeDetailView.as_view(), name='home'),
+    re_path(r'^update-profile', EmployeeUpdateView.as_view(), name='update-profile'),
     re_path(r'^employees', employees_listview, name='employees'),
     re_path(r'^holidays', holidays_listview, name='holidays'),
     re_path(r'^vacation', vacation_listview, name='vacation'),
@@ -44,9 +44,6 @@ urlpatterns = [
     re_path(r'^candidates', candidates_listview, name='candidates'),
     re_path(r'^settings', settings_listview, name='settings'),
     re_path(r'^password', password_listview, name='password'),
-
     re_path(r'^admin', admin.site.urls, name='admin'),
     re_path(r'^', ProfileRedirectView.as_view(), name='redirect'),
-
-    re_path(r'^update-profile/', EmployeeUpdateView.as_view(), name='update-profile'),
 ]

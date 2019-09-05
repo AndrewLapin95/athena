@@ -53,7 +53,7 @@ class Employee(models.Model):
     Employee model class
     """
     owner = models.OneToOneField(USER, on_delete=models.CASCADE)
-    first_name = models.CharField(max_length=120)
+    first_name = models.CharField(max_length=120, null=True, blank=True)
     last_name = models.CharField(max_length=120, null=True, blank=True)
     job_title = models.CharField(max_length=20, choices=JOB_TITLES)
     birthday = models.DateField(null=True, blank=True)
@@ -61,6 +61,7 @@ class Employee(models.Model):
     team = models.CharField(max_length=20, choices=TEAMS)
     date_of_join = models.DateField(null=True, blank=True)
     phone_number = models.CharField(max_length=120, null=True, blank=True)
-    address = models.CharField(max_length=120, null=True, blank=True)
+    address = models.CharField(max_length=360, null=True, blank=True)
     email = models.CharField(max_length=120, null=True, blank=True)
     bank_information = models.OneToOneField(BankInformation, on_delete=models.CASCADE)
+    profile_image_url = models.CharField(max_length=360, null=True, blank=True)

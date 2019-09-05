@@ -2540,12 +2540,26 @@ table.dataTable thead>tr>td.sorting {
 	18. Edit Profile
 -----------------------*/
 
+.profile-img-wrap {
+    height: 120px;
+    position: absolute;
+    width: 120px;
+    background: transparent;
+    overflow: hidden;
+}
+
 .profile-basic {
     margin-left: 140px;
 }
 
 .profile-basic .cal-icon {
     width: 100%;
+}
+
+.profile-img-wrap img {
+    border-radius: 50%;
+    height: 120px;
+    width: 120px;
 }
 
 .fileupload.btn {
