@@ -10,5 +10,9 @@ class EmployeeUpdateForm(forms.ModelForm):
         model = Employee
         fields = [
             'first_name',
-            'last_name'
+            'last_name',
+            'phone_number',
+            'birthday',
+            'gender',
+            'address',
         ]

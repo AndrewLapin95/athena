@@ -1,10 +1,11 @@
 import logging
 
+
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.models import User
 from django.views.generic import DetailView, RedirectView, UpdateView
 from django.db.models import Q
-from django.http import Http404
+from django.http import Http404, HttpResponse, JsonResponse
 
 from django.shortcuts import get_object_or_404, redirect
 
@@ -37,7 +38,6 @@ class EmployeeUpdateView(LoginRequiredMixin, UpdateView):
 
     def get_object(self):
         username = self.request.user
-
         return get_object_or_404(Employee, owner=username)
 
 class ProfileRedirectView(RedirectView):
