@@ -1,0 +1,36 @@
+<form method="POST" action="{% url 'create-emergency-contact' %}">
+    {% csrf_token %}
+    <div class="form-scroll">
+        <div class="card-box">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label>Name <span class="text-danger">*</span></label>
+                        <input name="name" class="form-control" type="text">
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label>Relationship <span class="text-danger">*</span></label>
+                        <input name="relationship" class="form-control" type="text">
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label>Date of birth <span class="text-danger">*</span></label>
+                        <input class="form-control datetimepicker" type="text" name="birthday">
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label>Phone <span class="text-danger">*</span></label>
+                        <input name="phone_number" class="form-control" type="text">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="submit-section">
+        <button class="btn btn-primary submit-btn">Submit</button>
+    </div>
+</form>

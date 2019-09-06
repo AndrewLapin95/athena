@@ -1,0 +1,11 @@
+<form method="post" action="{% url 'delete-contact' contact=contact_id%}">
+{% csrf_token %}
+    <td class="text-right">
+        <div class="dropdown dropdown-action">
+            <a aria-expanded="false" data-toggle="dropdown" class="action-icon dropdown-toggle" href="#"><i class="material-icons">more_vert</i></a>
+            <div class="dropdown-menu dropdown-menu-right">
+                <button type="submit" class="dropdown-item">Delete</button>
+            </div>
+        </div>
+    </td>
+</form>

@@ -1,16 +1,15 @@
 import logging
 
-
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.models import User
-from django.views.generic import DetailView, RedirectView, UpdateView
+from django.views.generic import DetailView, RedirectView, UpdateView, DeleteView, CreateView
 from django.db.models import Q
 from django.http import Http404, HttpResponse, JsonResponse
 
 from django.shortcuts import get_object_or_404, redirect
 
-from .models import Employee
-from .forms import EmployeeUpdateForm
+from .models import Employee, EmergencyContact
+from .forms import EmployeeUpdateForm, EmergencyContactCreateForm
 
 # Create your views here.
 
@@ -22,7 +21,7 @@ class EmployeeDetailView(LoginRequiredMixin, DetailView):
 
     def get_object(self):
         username = self.request.user
-
+        
         if username is None or str(username) != self.kwargs.get("username"):
             raise Http404
 
@@ -46,10 +45,33 @@ class ProfileRedirectView(RedirectView):
     """
     permanent = False
 
-    def get_redirect_url(self, *args, **kwards):  
+    def get_redirect_url(self, *args, **kwards):
         username = self.request.user
 
         if username is None:
             raise Http404
 
         return "profile/{}".format(username)
+
+class EmergencyContactDeleteView(LoginRequiredMixin, DeleteView):
+    """
+    View to delete emergency contact
+    """
+    form_class = EmergencyContact
+    template_name = "user/emergencycontact_confirm_delete.html"
+    success_url = "/"
+    
+    def get_object(self, queryset=None):
+        return get_object_or_404(EmergencyContact, id=self.kwargs.get("contact"))
+
+class EmergencyContactCreateView(LoginRequiredMixin, CreateView):
+    """
+    View to create a new emergency contact
+    """
+    form_class = EmergencyContactCreateForm
+    template_name = 'user/emergencycontact_create.html'
+    success_url = "/"
+
+    def form_valid(self, form):
+        form.instance.employee = Employee.objects.filter(owner=self.request.user)[:1].get()
+        return super(EmergencyContactCreateView, self).form_valid(form)

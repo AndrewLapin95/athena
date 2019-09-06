@@ -1,6 +1,6 @@
 from django import forms
 
-from .models import Employee
+from .models import Employee, EmergencyContact
 
 class EmployeeUpdateForm(forms.ModelForm):
     """
@@ -15,4 +15,17 @@ class EmployeeUpdateForm(forms.ModelForm):
             'birthday',
             'gender',
             'address',
+        ]
+
+class EmergencyContactCreateForm(forms.ModelForm):
+    """
+    Form to create a new emergency contact for a given user
+    """
+    class Meta:
+        model = EmergencyContact
+        fields = [
+            'name',
+            'relationship',
+            'birthday',
+            'phone_number',
         ]
