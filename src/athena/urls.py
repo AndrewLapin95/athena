@@ -17,10 +17,7 @@ from user.views import EmployeeDetailView, EmployeeUpdateView, ProfileRedirectVi
 from employees.views import employees_listview, departments_listview, designations_listview
 from accounts.views import expenses_listview, payments_listview
 from salary.views import salary_listview
-from jobs.views import jobs_listview, candidates_listview
 from vacations.views import  holidays_listview, vacation_listview
-from settings.views import settings_listview
-from settings.views import password_listview
 
 from django.contrib import admin
 from django.urls import re_path
@@ -41,10 +38,6 @@ urlpatterns = [
     re_path(r'^expenses', expenses_listview, name='expenses'),
     re_path(r'^payments', payments_listview, name='payments'),
     re_path(r'^salary', salary_listview, name='salary'),
-    re_path(r'^jobs', jobs_listview, name='jobs'),
-    re_path(r'^candidates', candidates_listview, name='candidates'),
-    re_path(r'^settings', settings_listview, name='settings'),
-    re_path(r'^password', password_listview, name='password'),
     re_path(r'^admin', admin.site.urls, name='admin'),
     re_path(r'^profile/(?P<username>[\w-]+)', EmployeeDetailView.as_view(), name='home'),
     re_path(r'^', ProfileRedirectView.as_view(), name='redirect'),
