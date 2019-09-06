@@ -4,15 +4,6 @@
     <div class="sidebar-inner slimscroll">
         <div id="sidebar-menu" class="sidebar-menu">
             <ul>
-                {% if request.user.userprofile.role == "MANAGER"%}
-                <li class="submenu">
-                    <a href="#"><i class="la la-files-o"></i> <span> Accounts </span> <span class="menu-arrow"></span></a>
-                    <ul style="display: none;">
-                        <li><a href="{% url "payments" %}">Payments</a></li>
-                        <li><a href="{% url "expenses" %}">Expenses</a></li>
-                    </ul>
-                </li>
-                {% endif %}
                 <li class="submenu">
                     <a href="#"><i class="la la-group"></i> <span> Employees</span> <span class="menu-arrow"></span></a>
                     <ul style="display: none;">
