@@ -13,7 +13,7 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
-from user.views import EmployeeDetailView, EmployeeUpdateView, ProfileRedirectView
+from user.views import EmployeeDetailView, EmployeeUpdateView, ProfileRedirectView, EmergencyContactDeleteView, EmergencyContactCreateView
 from employees.views import employees_listview, departments_listview, designations_listview
 from accounts.views import expenses_listview, payments_listview
 from salary.views import salary_listview
@@ -30,8 +30,9 @@ from django.contrib.auth.views import LoginView, LogoutView
 urlpatterns = [
     re_path(r'^login', LoginView.as_view(), name='login'),
     re_path(r'^logout', LogoutView.as_view(), name='logout'),
-    re_path(r'^profile/(?P<username>[\w-]+)', EmployeeDetailView.as_view(), name='home'),
     re_path(r'^update-profile', EmployeeUpdateView.as_view(), name='update-profile'),
+    re_path(r'^create-emergency-contact', EmergencyContactCreateView.as_view(), name='create-emergency-contact'),
+    re_path(r'^delete-contact/(?P<contact>[0-9]+)', EmergencyContactDeleteView.as_view(), name='delete-contact'),
     re_path(r'^employees', employees_listview, name='employees'),
     re_path(r'^holidays', holidays_listview, name='holidays'),
     re_path(r'^vacation', vacation_listview, name='vacation'),
@@ -45,5 +46,6 @@ urlpatterns = [
     re_path(r'^settings', settings_listview, name='settings'),
     re_path(r'^password', password_listview, name='password'),
     re_path(r'^admin', admin.site.urls, name='admin'),
+    re_path(r'^profile/(?P<username>[\w-]+)', EmployeeDetailView.as_view(), name='home'),
     re_path(r'^', ProfileRedirectView.as_view(), name='redirect'),
 ]

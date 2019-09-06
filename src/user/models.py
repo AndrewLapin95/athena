@@ -65,3 +65,32 @@ class Employee(models.Model):
     email = models.CharField(max_length=120, null=True, blank=True)
     bank_information = models.OneToOneField(BankInformation, on_delete=models.CASCADE)
     profile_image_url = models.CharField(max_length=360, null=True, blank=True)
+
+class EmergencyContact(models.Model):
+    """
+    Emergency contacts for a given employee
+    """
+    employee = models.ForeignKey(Employee, on_delete=models.CASCADE)
+    name = models.CharField(max_length=120, null=True, blank=True)
+    relationship = models.CharField(max_length=120, null=True, blank=True)
+    birthday = models.DateField(null=True, blank=True)
+    phone_number = models.CharField(max_length=120, null=True, blank=True)
+
+class EducationInformation(models.Model):
+    """
+    Educational information of the employee
+    """
+    employee = models.ForeignKey(Employee, on_delete=models.CASCADE)
+    institution_name = models.CharField(max_length=120, null=True, blank=True)
+    title = models.CharField(max_length=120, null=True, blank=True)
+    start_date = models.DateField(null=True, blank=True)
+    end_date = models.DateField(null=True, blank=True)
+
+class ExperienceInformation(models.Model):
+    """
+    Experience information of the employee
+    """
+    employee = models.ForeignKey(Employee, on_delete=models.CASCADE)
+    title = models.CharField(max_length=120, null=True, blank=True)
+    start_date = models.DateField(null=True, blank=True)
+    end_date = models.DateField(null=True, blank=True)
