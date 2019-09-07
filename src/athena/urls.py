@@ -16,7 +16,7 @@ Including another URLconf
 from user.views import EmployeeDetailView, EmployeeUpdateView, ProfileRedirectView, EmergencyContactDeleteView, EmergencyContactCreateView
 from employees.views import employees_listview, departments_listview, designations_listview
 from salary.views import salary_listview
-from vacations.views import  holidays_listview, vacation_listview
+from vacations.views import  vacation_listview, HolidayListView, HolidayCreateView, HolidayDeleteView
 
 from django.contrib import admin
 from django.urls import re_path
@@ -27,10 +27,12 @@ urlpatterns = [
     re_path(r'^login', LoginView.as_view(), name='login'),
     re_path(r'^logout', LogoutView.as_view(), name='logout'),
     re_path(r'^update-profile', EmployeeUpdateView.as_view(), name='update-profile'),
+    re_path(r'^create-holiday', HolidayCreateView.as_view(), name='create-holiday'),
+    re_path(r'^delete-holiday/(?P<holiday>[0-9]+)', HolidayDeleteView.as_view(), name='delete-holiday'),
     re_path(r'^create-emergency-contact', EmergencyContactCreateView.as_view(), name='create-emergency-contact'),
     re_path(r'^delete-contact/(?P<contact>[0-9]+)', EmergencyContactDeleteView.as_view(), name='delete-contact'),
     re_path(r'^employees', employees_listview, name='employees'),
-    re_path(r'^holidays', holidays_listview, name='holidays'),
+    re_path(r'^holidays', HolidayListView.as_view(), name='holidays'),
     re_path(r'^vacation', vacation_listview, name='vacation'),
     re_path(r'^departments', departments_listview, name='departments'),
     re_path(r'^designations', designations_listview, name='designations'),

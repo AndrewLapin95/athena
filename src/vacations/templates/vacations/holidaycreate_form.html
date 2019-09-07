@@ -1,0 +1,18 @@
+<form method="POST" action="{% url 'create-holiday' %}">
+    {% csrf_token %}
+    <div class="form-group">
+        <label>Holiday Name <span class="text-danger">*</span></label>
+        <input name="title" class="form-control" type="text">
+    </div>
+    <div class="form-group">
+        <label>Holiday Date <span class="text-danger">*</span></label>
+        <div class="cal-icon"><input name="holiday_date" class="form-control datetimepicker" type="text"></div>
+    </div>
+    <div class="form-group">
+        <label>Week Day <span class="text-danger">*</span></label>
+        <input name="week_day" class="form-control" type="text">
+    </div>
+    <div class="submit-section">
+        <button class="btn btn-primary submit-btn">Submit</button>
+    </div>
+</form>

@@ -1,0 +1,11 @@
+<form method="post" action="{% url 'delete-holiday' holiday=holiday_id%}">
+    {% csrf_token %}
+    <td class="text-right">
+        <div class="dropdown dropdown-action">
+            <a href="#" class="action-icon dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="material-icons">more_vert</i></a>
+            <div class="dropdown-menu dropdown-menu-right">
+                <button type="submit" class="dropdown-item">Delete</button>
+            </div>
+        </div>
+    </td>
+</form>
