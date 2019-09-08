@@ -2,13 +2,13 @@ import logging
 
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.models import User
-from django.views.generic import DetailView, RedirectView, UpdateView, DeleteView, CreateView
+from django.views.generic import DetailView, RedirectView, UpdateView, DeleteView, CreateView, ListView
 from django.db.models import Q
 from django.http import Http404, HttpResponse, JsonResponse
 
 from django.shortcuts import get_object_or_404, redirect
 
-from .models import Employee, EmergencyContact
+from .models import Employee, EmergencyContact, Salary
 from .forms import EmployeeUpdateForm, EmergencyContactCreateForm
 
 # Create your views here.
@@ -75,3 +75,13 @@ class EmergencyContactCreateView(LoginRequiredMixin, CreateView):
     def form_valid(self, form):
         form.instance.employee = Employee.objects.filter(owner=self.request.user)[:1].get()
         return super(EmergencyContactCreateView, self).form_valid(form)
+
+class SalaryListView(LoginRequiredMixin, ListView):
+    """
+    Provides a list of holidays
+    """
+    login_url = "/login/"
+    template_name = "user/salary_list.html"
+
+    def get_queryset(self):
+        return Salary.objects.all()

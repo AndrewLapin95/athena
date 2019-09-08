@@ -38,6 +38,6 @@ class HolidayDeleteView(LoginRequiredMixin, DeleteView):
         return get_object_or_404(Holiday, id=self.kwargs.get("holiday"))
 
 def vacation_listview(request):
-    template_name = "vacation_list.html"
+    template_name = "vacations/vacation_list.html"
     context = {}
     return render(request, template_name, context)
