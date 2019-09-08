@@ -6,7 +6,7 @@ from django.views.generic import DetailView, RedirectView, UpdateView, DeleteVie
 from django.db.models import Q
 from django.http import Http404, HttpResponse, JsonResponse
 
-from django.shortcuts import get_object_or_404, redirect
+from django.shortcuts import get_object_or_404, redirect, render
 
 from .models import Employee, EmergencyContact, Salary
 from .forms import EmployeeUpdateForm, EmergencyContactCreateForm
@@ -85,3 +85,19 @@ class SalaryListView(LoginRequiredMixin, ListView):
 
     def get_queryset(self):
         return Salary.objects.all()
+
+# Create your views here.
+def employees_listview(request):
+    template_name = "user/employees_list.html"
+    context = {}
+    return render(request, template_name, context)
+
+def departments_listview(request):
+    template_name = "user/departments_list.html"
+    context = {}
+    return render(request, template_name, context)
+
+def designations_listview(request):
+    template_name = "user/designations_list.html"
+    context = {}
+    return render(request, template_name, context)
