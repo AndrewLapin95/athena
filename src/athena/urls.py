@@ -13,9 +13,8 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
-from user.views import EmployeeDetailView, EmployeeUpdateView, ProfileRedirectView, EmergencyContactDeleteView, EmergencyContactCreateView
+from user.views import EmployeeDetailView, EmployeeUpdateView, ProfileRedirectView, EmergencyContactDeleteView, EmergencyContactCreateView, SalaryListView
 from employees.views import employees_listview, departments_listview, designations_listview
-from salary.views import salary_listview
 from vacations.views import  vacation_listview, HolidayListView, HolidayCreateView, HolidayDeleteView
 
 from django.contrib import admin
@@ -36,7 +35,7 @@ urlpatterns = [
     re_path(r'^vacation', vacation_listview, name='vacation'),
     re_path(r'^departments', departments_listview, name='departments'),
     re_path(r'^designations', designations_listview, name='designations'),
-    re_path(r'^salary', salary_listview, name='salary'),
+    re_path(r'^salary', SalaryListView.as_view(), name='salary'),
     re_path(r'^admin', admin.site.urls, name='admin'),
     re_path(r'^profile/(?P<username>[\w-]+)', EmployeeDetailView.as_view(), name='home'),
     re_path(r'^', ProfileRedirectView.as_view(), name='redirect'),

@@ -94,3 +94,10 @@ class ExperienceInformation(models.Model):
     title = models.CharField(max_length=120, null=True, blank=True)
     start_date = models.DateField(null=True, blank=True)
     end_date = models.DateField(null=True, blank=True)
+
+class Salary(models.Model):
+    """
+    Salary information for an employee
+    """
+    employee = models.ForeignKey(Employee, on_delete=models.CASCADE)
+    salary = models.IntegerField(null=True, blank=True)
