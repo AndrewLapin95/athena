@@ -101,3 +101,8 @@ def designations_listview(request):
     template_name = "user/designations_list.html"
     context = {}
     return render(request, template_name, context)
+
+def vacation_listview(request):
+    template_name = "user/vacation_list.html"
+    context = {}
+    return render(request, template_name, context)
