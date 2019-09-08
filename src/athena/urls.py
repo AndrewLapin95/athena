@@ -13,8 +13,8 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
-from user.views import EmployeeDetailView, EmployeeUpdateView, ProfileRedirectView, EmergencyContactDeleteView, EmergencyContactCreateView, SalaryListView
-from user.views import employees_listview, departments_listview, designations_listview, vacation_listview
+from user.views import EmployeeDetailView, EmployeeUpdateView, ProfileRedirectView, EmergencyContactDeleteView, EmergencyContactCreateView, SalaryListView, EmployeeListView
+from user.views import departments_listview, designations_listview, vacation_listview
 from vacations.views import HolidayListView, HolidayCreateView, HolidayDeleteView
 
 from django.contrib import admin
@@ -30,7 +30,7 @@ urlpatterns = [
     re_path(r'^delete-holiday/(?P<holiday>[0-9]+)', HolidayDeleteView.as_view(), name='delete-holiday'),
     re_path(r'^create-emergency-contact', EmergencyContactCreateView.as_view(), name='create-emergency-contact'),
     re_path(r'^delete-contact/(?P<contact>[0-9]+)', EmergencyContactDeleteView.as_view(), name='delete-contact'),
-    re_path(r'^employees', employees_listview, name='employees'),
+    re_path(r'^employees', EmployeeListView.as_view(), name='employees'),
     re_path(r'^holidays', HolidayListView.as_view(), name='holidays'),
     re_path(r'^vacation', vacation_listview, name='vacation'),
     re_path(r'^departments', departments_listview, name='departments'),

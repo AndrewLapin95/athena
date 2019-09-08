@@ -10,27 +10,20 @@
             <div class="col">
                 <h4 class="page-title">Employee(s)</h4>
             </div>
-            <div class="col-auto text-right float-right ml-auto m-b-30">
-                <a href="#" class="btn add-btn" data-toggle="modal" data-target="#add_employee"><i class="fa fa-plus"></i> Add Employee</a>
-            </div>
         </div>
         <!-- /Page Title -->
 
         <div class="row staff-grid-row">
             <div class="col-md-4 col-sm-6 col-12 col-lg-4 col-xl-3">
-                <div class="profile-widget">
-                    <div class="profile-img">
-                        <a href="profile.html" class="avatar"><img src="{% static " img/profiles/avatar-02.jpg " %}" alt=""></a>
-                    </div>
-                    <div class="dropdown profile-action">
-                        <a href="#" class="action-icon dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="material-icons">more_vert</i></a>
-                        <div class="dropdown-menu dropdown-menu-right">
-                            <a class="dropdown-item" href="#" data-toggle="modal" data-target="#delete_employee"><i class="fa fa-trash-o m-r-5"></i> Delete</a>
+                {% for object in object_list %}
+                    <div class="profile-widget">
+                        <div class="profile-img">
+                            <a href="profile/{{ object.owner.username }}" class="avatar"><img src="{{ object.profile_image_url }}" alt=""></a>
                         </div>
+                        <h4 class="user-name m-t-10 mb-0 text-ellipsis"><a href="profile/{{ object.owner.username }}">{{ object.first_name }} {{ object.last_name }}</a></h4>
+                        <div class="small text-muted">{{ object.job_title }}</div>
                     </div>
-                    <h4 class="user-name m-t-10 mb-0 text-ellipsis"><a href="profile.html">John Doe</a></h4>
-                    <div class="small text-muted">Web Designer</div>
-                </div>
+                {% endfor %}
             </div>
 
 

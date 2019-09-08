@@ -86,11 +86,15 @@ class SalaryListView(LoginRequiredMixin, ListView):
     def get_queryset(self):
         return Salary.objects.all()
 
-# Create your views here.
-def employees_listview(request):
+class EmployeeListView(LoginRequiredMixin, ListView):
+    """
+    Provides a list of employees
+    """
+    login_url = "/login/"
     template_name = "user/employees_list.html"
-    context = {}
-    return render(request, template_name, context)
+
+    def get_queryset(self):
+        return Employee.objects.all()
 
 def departments_listview(request):
     template_name = "user/departments_list.html"
