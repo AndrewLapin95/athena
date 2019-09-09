@@ -8,8 +8,8 @@ from django.http import Http404, HttpResponse, JsonResponse
 
 from django.shortcuts import get_object_or_404, redirect, render
 
-from .models import Employee, EmergencyContact, Salary, Department, Designation
-from .forms import EmployeeUpdateForm, EmergencyContactCreateForm
+from .models import Employee, EmergencyContact, Salary, Department, Designation, Vacation
+from .forms import EmployeeUpdateForm, EmergencyContactCreateForm, VacationCreateForm, VacationUpdateForm
 
 # Create your views here.
 
@@ -20,12 +20,12 @@ class EmployeeDetailView(LoginRequiredMixin, DetailView):
     login_url = "/login/"
 
     def get_object(self):
-        username = self.request.user
-        
-        if username is None or str(username) != self.kwargs.get("username"):
+        user = User.objects.filter(username=self.kwargs.get("username"))[:1].get()
+
+        if user is None:
             raise Http404
 
-        return get_object_or_404(Employee, owner=username)
+        return get_object_or_404(Employee, owner=user)
 
 class EmployeeUpdateView(LoginRequiredMixin, UpdateView):
     """
@@ -51,7 +51,7 @@ class ProfileRedirectView(RedirectView):
         if username is None:
             raise Http404
 
-        return "profile/{}".format(username)
+        return "/profile/{}".format(username)
 
 class EmergencyContactDeleteView(LoginRequiredMixin, DeleteView):
     """
@@ -116,8 +116,50 @@ class DesignationListView(LoginRequiredMixin, ListView):
     def get_queryset(self):
         return Designation.objects.all()
 
-
-def vacation_listview(request):
+class VacationListView(LoginRequiredMixin, ListView):
+    """
+    Provides a list of vacation requests
+    """
+    login_url = "/login/"
     template_name = "user/vacation_list.html"
-    context = {}
-    return render(request, template_name, context)
+
+    def get_queryset(self):
+        return Vacation.objects.all()
+
+class VacationCreateView(LoginRequiredMixin, CreateView):
+    """
+    View to create a new vacation request
+    """
+    form_class = VacationCreateForm
+    template_name = 'user/vacation_list.html'
+    success_url = "/vacation"
+
+    def form_valid(self, form):
+        form.instance.employee = Employee.objects.filter(owner=self.request.user)[:1].get()
+        form.instance.status = "new"
+        return super(VacationCreateView, self).form_valid(form)
+
+class VacationDeleteView(LoginRequiredMixin, DeleteView):
+    """
+    View to delete emergency contact
+    """
+    form_class = EmergencyContact
+    template_name = 'user/vacation_delete.html'
+    success_url = "/vacation"
+    
+    def get_object(self, queryset=None):
+        return get_object_or_404(Vacation, id=self.kwargs.get("vacation"))
+
+class VacationUpdateView(LoginRequiredMixin, UpdateView):
+    """
+    View to update a status of a vacation request
+    """
+    form_class = VacationUpdateForm
+    template_name = "user/vacation_update.html"
+    success_url = "/vacation"
+    
+    def form_valid(self, form):
+        print("HERE")
+        form.instance.status = self.kwargs.get("status")
+        return super(VacationUpdateView, self).form_valid(form)
+

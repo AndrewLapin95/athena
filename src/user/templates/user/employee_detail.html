@@ -35,7 +35,7 @@
                                         <h3 class="user-name m-t-0 mb-0">{{ object.first_name }} {{ object.last_name }}</h3>
                                         <h6 class="text-muted">{{ object.team }}</h6>
                                         <small class="text-muted">{{ object.job_title }}</small>
-                                        <div class="staff-id">Employee Username: {{ user.username }}</div>
+                                        <div class="staff-id">Employee Username: {{ object.owner.username }}</div>
                                         <div class="small doj text-muted">Date of Join: {{ object.date_of_join }}</div>
                                     </div>
                                 </div>

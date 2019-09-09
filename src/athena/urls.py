@@ -13,8 +13,7 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
-from user.views import EmployeeDetailView, EmployeeUpdateView, ProfileRedirectView, EmergencyContactDeleteView, EmergencyContactCreateView, SalaryListView, EmployeeListView, DepartmentListView, DesignationListView
-from user.views import vacation_listview
+from user.views import EmployeeDetailView, EmployeeUpdateView, ProfileRedirectView, EmergencyContactDeleteView, EmergencyContactCreateView, SalaryListView, EmployeeListView, DepartmentListView, DesignationListView, VacationListView, VacationCreateView, VacationDeleteView, VacationUpdateView
 from vacations.views import HolidayListView, HolidayCreateView, HolidayDeleteView
 
 from django.contrib import admin
@@ -32,7 +31,10 @@ urlpatterns = [
     re_path(r'^delete-contact/(?P<contact>[0-9]+)', EmergencyContactDeleteView.as_view(), name='delete-contact'),
     re_path(r'^employees', EmployeeListView.as_view(), name='employees'),
     re_path(r'^holidays', HolidayListView.as_view(), name='holidays'),
-    re_path(r'^vacation', vacation_listview, name='vacation'),
+    re_path(r'^vacation', VacationListView.as_view(), name='vacation'),
+    re_path(r'^create-vacation', VacationCreateView.as_view(), name='create-vacation'),
+    re_path(r'^delete-vacation/(?P<vacation>[0-9]+)', VacationDeleteView.as_view(), name='delete-vacation'),
+    re_path(r'^update-vacation/(?P<vacation>[0-9]+)/(?P<status>[\w-]+)', VacationUpdateView.as_view(), name='update-vacation'),
     re_path(r'^departments', DepartmentListView.as_view(), name='departments'),
     re_path(r'^designations', DesignationListView.as_view(), name='designations'),
     re_path(r'^salary', SalaryListView.as_view(), name='salary'),

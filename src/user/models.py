@@ -120,4 +120,6 @@ class Vacation(models.Model):
     Vacation information
     """
     employee = models.ForeignKey(Employee, on_delete=models.CASCADE)
-    status = models.BooleanField(default=False)
+    start_date = models.DateField(null=True, blank=True)
+    end_date = models.DateField(null=True, blank=True)
+    status = models.CharField(max_length=120, null=True, blank=True)
