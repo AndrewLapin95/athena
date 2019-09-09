@@ -14,18 +14,17 @@
         <!-- /Page Title -->
 
         <div class="row staff-grid-row">
-            <div class="col-md-4 col-sm-6 col-12 col-lg-4 col-xl-3">
-                {% for object in object_list %}
-                    <div class="profile-widget">
-                        <div class="profile-img">
-                            <a href="profile/{{ object.owner.username }}" class="avatar"><img src="{{ object.profile_image_url }}" alt=""></a>
+            {% for object in object_list %}
+                <div class="col-md-4 col-sm-6 col-12 col-lg-4 col-xl-3">
+                        <div class="profile-widget">
+                            <div class="profile-img">
+                                <a href="profile/{{ object.owner.username }}" class="avatar"><img src="{{ object.profile_image_url }}" alt=""></a>
+                            </div>
+                            <h4 class="user-name m-t-10 mb-0 text-ellipsis"><a href="profile/{{ object.owner.username }}">{{ object.first_name }} {{ object.last_name }}</a></h4>
+                            <div class="small text-muted">{{ object.job_title }}</div>
                         </div>
-                        <h4 class="user-name m-t-10 mb-0 text-ellipsis"><a href="profile/{{ object.owner.username }}">{{ object.first_name }} {{ object.last_name }}</a></h4>
-                        <div class="small text-muted">{{ object.job_title }}</div>
-                    </div>
-                {% endfor %}
-            </div>
-
+                </div>
+            {% endfor %}
 
             <!-- Add Employee Modal -->
             <div id="add_employee" class="modal custom-modal fade" role="dialog">
