@@ -8,7 +8,7 @@ from django.http import Http404, HttpResponse, JsonResponse
 
 from django.shortcuts import get_object_or_404, redirect, render
 
-from .models import Employee, EmergencyContact, Salary
+from .models import Employee, EmergencyContact, Salary, Department, Designation
 from .forms import EmployeeUpdateForm, EmergencyContactCreateForm
 
 # Create your views here.
@@ -96,15 +96,26 @@ class EmployeeListView(LoginRequiredMixin, ListView):
     def get_queryset(self):
         return Employee.objects.all()
 
-def departments_listview(request):
+class DepartmentListView(LoginRequiredMixin, ListView):
+    """
+    Provides a list of departments
+    """
+    login_url = "/login/"
     template_name = "user/departments_list.html"
-    context = {}
-    return render(request, template_name, context)
 
-def designations_listview(request):
+    def get_queryset(self):
+        return Department.objects.all()
+
+class DesignationListView(LoginRequiredMixin, ListView):
+    """
+    Provides a list of designations
+    """
+    login_url = "/login/"
     template_name = "user/designations_list.html"
-    context = {}
-    return render(request, template_name, context)
+
+    def get_queryset(self):
+        return Designation.objects.all()
+
 
 def vacation_listview(request):
     template_name = "user/vacation_list.html"
