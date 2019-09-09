@@ -1,6 +1,6 @@
 from django import forms
 
-from .models import Employee, EmergencyContact, Department, Designation
+from .models import Employee, EmergencyContact, Department, Designation, Vacation
 
 class EmployeeUpdateForm(forms.ModelForm):
     """
@@ -28,4 +28,25 @@ class EmergencyContactCreateForm(forms.ModelForm):
             'relationship',
             'birthday',
             'phone_number',
+        ]
+
+class VacationCreateForm(forms.ModelForm):
+    """
+    Form to create a new emergency contact for a given user
+    """
+    class Meta:
+        model = Vacation
+        fields = [
+            'start_date',
+            'end_date',
+        ]
+
+class VacationUpdateForm(forms.ModelForm):
+    """
+    Form to update vacation request for a given user
+    """
+    class Meta:
+        model = Vacation
+        fields = [
+            'status',
         ]

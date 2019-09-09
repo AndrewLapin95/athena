@@ -1,4 +1,12 @@
-{% extends "base.html" %} {% block title %}User Profile{% endblock %} {% block content %} {% if user.is_authenticated %} {% load static %}
+{% extends "base.html" %} 
+
+{% block title %}User Profile{% endblock %} 
+
+{% block content %} 
+
+{% if user.is_authenticated %} 
+
+{% load static %}
 <!-- Page Wrapper -->
 <div class="page-wrapper">
 
