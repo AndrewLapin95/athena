@@ -101,3 +101,16 @@ class Salary(models.Model):
     """
     employee = models.ForeignKey(Employee, on_delete=models.CASCADE)
     salary = models.IntegerField(null=True, blank=True)
+
+class Department(models.Model):
+    """
+    Department information
+    """
+    name = models.CharField(max_length=120, null=True, blank=True)
+
+class Designation(models.Model):
+    """
+    Designation information
+    """
+    department = models.OneToOneField(Department, on_delete=models.CASCADE)
+    name = models.CharField(max_length=120, null=True, blank=True)

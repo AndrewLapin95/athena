@@ -1,6 +1,6 @@
 from django import forms
 
-from .models import Employee, EmergencyContact
+from .models import Employee, EmergencyContact, Department, Designation
 
 class EmployeeUpdateForm(forms.ModelForm):
     """
