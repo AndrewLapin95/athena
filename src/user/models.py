@@ -114,3 +114,10 @@ class Designation(models.Model):
     """
     department = models.OneToOneField(Department, on_delete=models.CASCADE)
     name = models.CharField(max_length=120, null=True, blank=True)
+
+class Vacation(models.Model):
+    """
+    Vacation information
+    """
+    employee = models.ForeignKey(Employee, on_delete=models.CASCADE)
+    status = models.BooleanField(default=False)
