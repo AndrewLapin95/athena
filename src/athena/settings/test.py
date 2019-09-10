@@ -131,6 +131,7 @@ STATICFILES_DIRS = [
 ]
 
 # Redirect URL upon successful login
+LOGIN_URL = '/login/'
 LOGIN_REDIRECT_URL = 'redirect'
 LOGOUT_REDIRECT_URL = 'login'
 

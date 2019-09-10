@@ -1,38 +1,63 @@
-{% extends "base.html" %}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
+        <title>Login</title>
 
-{% block content %}
+        {% load static %}
 
-<h2>Log in</h2>
-<div id="login">
-  <form class="form-horizontal" name="LoginForm" action="/login/" method="post">
-    {% csrf_token %}
-    {% if next %}
-        <input type="hidden" name="next" value="{{ next }}" />
-    {% endif %}
-    <div class="control-group">
-        <label class="control-label" for="alias">Company Alias</label>
-        <div class="controls">
-            <input type="text" id="alias" name="alias"  placeholder="Alias">
-        </div>
-    </div>
-    <div class="control-group">
-        <label class="control-label" for="username">Username</label>
-        <div class="controls">
-            <input type="text" id="username" name="username"  placeholder="Username">
-        </div>
-    </div>
-    <div class="control-group">
-        <label class="control-label" for="password">Password</label>
-        <div class="controls">
-            <input type="password" name="password" id="password" placeholder="Password">
-        </div>
-    </div>
-    <div class="control-group">
-      <div class="controls">
-          <button type="submit" class="btn">Login</button>
-      </div>
-    </div>
-  </form>
-</div>
+		<!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="{% static "css/bootstrap.css" %}">
+		
+		<!-- Fontawesome CSS -->
+        <link rel="stylesheet" href="{% static "css/font-awesome.min.css" %}">
+		
+		<!-- Main CSS -->
+        <link rel="stylesheet" href="{% static "css/style.css" %}">
 
-{% endblock %}
+    </head>
+    <body class="account-page">
+	
+		<!-- Main Wrapper -->
+        <div class="main-wrapper">
+			<div class="account-content">
+				<div class="container">
+					<div class="account-box">
+						<div class="account-wrapper">
+							<h3 class="account-title">Athena</h3>
+							<!-- Account Form -->
+							<form name="LoginForm" action="/login/" method="post">
+                                {% csrf_token %}
+                                {% if next %}
+                                    <input type="hidden" name="next" value="{{ next }}" />
+                                {% endif %}
+								<div class="form-group">
+									<label>Company Alias</label>
+									<input class="form-control" type="text" id="alias" name="alias"  placeholder="Alias">
+								</div>
+								<div class="form-group">
+									<label>Email Address</label>
+									<input class="form-control" type="text" id="username" name="username"  placeholder="Username">
+								</div>
+								<div class="form-group">
+									<div class="row">
+										<div class="col">
+											<label>Password</label>
+										</div>
+									</div>
+									<input class="form-control" type="password" name="password" id="password" placeholder="Password">
+								</div>
+								<div class="form-group text-center">
+									<button class="btn btn-primary account-btn" type="submit">Login</button>
+								</div>
+							</form>
+							<!-- /Account Form -->
+						</div>
+					</div>
+				</div>
+			</div>
+        </div>
+		
+    </body>
+</html>

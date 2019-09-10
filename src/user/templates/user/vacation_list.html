@@ -44,7 +44,7 @@
                                 <td>{{ object.employee.email }}</td>
                                 <td>{{ object.start_date}}</td>
                                 <td>{{ object.end_date}}</td>
-                                
+
                                 {% if user.userprofile.role == "EMPLOYEE" %}
                                     <td class="text-center">
                                         <div class="action-label">
@@ -60,7 +60,16 @@
                                         </div>
                                     </td>
                                 {% elif user.userprofile.role  == "MANAGER" %}
-									{% include 'user/vacation_update.html' with vacation_id=object.id %}
+                                <td class="text-center">
+                                    <div class="dropdown action-label">
+                                        <a class="btn btn-white btn-sm btn-rounded dropdown-toggle" href="#" data-toggle="dropdown" aria-expanded="false">
+                                            <i class="fa fa-dot-circle-o text-purple"></i> New
+                                        </a>
+                                        {% include 'user/vacation_update.html' with vacation_id=object.id new_status="approve" %}
+                                        {% include 'user/vacation_update.html' with vacation_id=object.id new_status="decline" %}
+                                    </div>
+                                </td>
+									
                                 {% endif %}
 
                                 {% include 'user/vacation_delete.html' with vacation_id=object.id %}
