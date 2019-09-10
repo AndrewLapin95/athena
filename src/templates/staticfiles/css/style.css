@@ -620,6 +620,11 @@ table.dataTable thead>tr>td.sorting {
     color: #ff9b44 !important;
 }
 
+.text-danger,
+.dropdown-menu>li>a.text-danger {
+    color: red !important;
+}
+
 .text-success,
 .dropdown-menu>li>a.text-success {
     color: #55ce63 !important;

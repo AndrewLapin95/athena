@@ -21,12 +21,23 @@ class EmployeeDetailView(LoginRequiredMixin, DetailView):
     login_url = "/login/"
 
     def get_object(self):
-        user = User.objects.filter(username=self.kwargs.get("username"))[:1].get()
+        
+        user = self.request.user
+        profile_user = User.objects.filter(username=self.kwargs.get("username"))[:1].get()
 
-        if user is None:
-            raise Http404
+        if user.userprofile.role == "MANAGER":
+        
+            if profile_user is None:
+                raise Http404
+            return get_object_or_404(Employee, owner=profile_user)
 
-        return get_object_or_404(Employee, owner=user)
+        else:
+
+            if user != profile_user:
+                raise Http404
+            
+            return get_object_or_404(Employee, owner=user)
+
 
 class EmployeeUpdateView(LoginRequiredMixin, UpdateView):
     """
@@ -87,7 +98,12 @@ class SalaryListView(LoginRequiredMixin, ListView):
     template_name = "user/salary_list.html"
 
     def get_queryset(self):
-        return Salary.objects.all()
+        user = self.request.user
+        
+        if user.userprofile.role == "MANAGER":
+            return Salary.objects.all()
+        else:
+            return Salary.objects.filter(employee=user.employee)
 
 class EmployeeListView(LoginRequiredMixin, ListView):
     """
@@ -97,7 +113,12 @@ class EmployeeListView(LoginRequiredMixin, ListView):
     template_name = "user/employees_list.html"
 
     def get_queryset(self):
-        return Employee.objects.all()
+        user = self.request.user
+
+        if user.userprofile.role == "MANAGER":
+            return Employee.objects.all()
+        else:
+            return Employee.objects.filter(owner=user)
 
 class DepartmentListView(LoginRequiredMixin, ListView):
     """
@@ -127,7 +148,13 @@ class VacationListView(LoginRequiredMixin, ListView):
     template_name = "user/vacation_list.html"
 
     def get_queryset(self):
-        return Vacation.objects.all()
+        
+        user = self.request.user
+        
+        if user.userprofile.role == "MANAGER":
+            return Vacation.objects.all()
+        else:
+            return Vacation.objects.filter(employee=user.employee)
 
 class VacationCreateView(LoginRequiredMixin, CreateView):
     """
