@@ -6,7 +6,8 @@ from django.views.generic import DetailView, RedirectView, UpdateView, DeleteVie
 from django.db.models import Q
 from django.http import Http404, HttpResponse, JsonResponse
 
-from django.shortcuts import get_object_or_404, redirect, render
+from django.shortcuts import get_object_or_404, redirect, render, render_to_response
+from django.template import RequestContext
 
 from .models import Employee, EmergencyContact, Salary, Department, Designation, Vacation
 from .forms import EmployeeUpdateForm, EmergencyContactCreateForm, VacationCreateForm, VacationUpdateForm
@@ -50,7 +51,9 @@ class ProfileRedirectView(RedirectView):
 
         if username is None:
             raise Http404
-
+        elif str(username) == "AnonymousUser":
+            return "/vacations"
+            
         return "/profile/{}".format(username)
 
 class EmergencyContactDeleteView(LoginRequiredMixin, DeleteView):
@@ -163,3 +166,13 @@ class VacationUpdateView(LoginRequiredMixin, UpdateView):
         form.instance.status = self.kwargs.get("status")
         return super(VacationUpdateView, self).form_valid(form)
 
+    def get_object(self):
+        return get_object_or_404(Vacation, id=self.kwargs.get("vacation"))
+
+# View functions for custom error handlers
+
+def handler404(request, exception):
+    return render(request, 'error-404.html', status=404)
+
+def handler500(request):
+    return render(request, 'error-500.html', status=500)

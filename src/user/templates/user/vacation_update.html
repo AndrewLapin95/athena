@@ -1,14 +1,13 @@
-<form method="POST" action="{% url 'update-vacation' vacation=vacation_id status="new" %}">
+<form method="POST" action="{% url 'update-vacation' vacation=vacation_id status=new_status %}">
     {% csrf_token %}
-    <td class="text-center">
-        <div class="dropdown action-label">
-            <a class="btn btn-white btn-sm btn-rounded dropdown-toggle" href="#" data-toggle="dropdown" aria-expanded="false">
-                <i class="fa fa-dot-circle-o text-purple"></i> New
-            </a>
-            <div class="dropdown-menu dropdown-menu-right">
-                <a class="dropdown-item" href="vacation/{{ vacation }}/approve" data-toggle="modal" data-target="#approve_leave"><i class="fa fa-dot-circle-o text-success"></i> Approve</a>
-                <a class="dropdown-item" href="vacation/{{ vacation }}/decline"><i class="fa fa-dot-circle-o text-danger"></i> Decline</a>
-            </div>
-        </div>
-    </td>
+    <div class="dropdown-menu dropdown-menu-right">
+        {% if new_status == "approve" %}
+            <button data-target="#approve_leave" data-toggle="modal" class="dropdown-item" type='submit'><i class="fa fa-dot-circle-o text-success"></i> Approve</button>
+        {% endif %}
+
+        {% if new_status == "decline" %}
+            <button data-toggle="modal" class="dropdown-item" type='submit'><i class="fa fa-dot-circle-o text-danger"></i> Decline</button>
+        {% endif %}
+        
+    </div>
 </form>
