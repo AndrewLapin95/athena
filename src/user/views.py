@@ -162,8 +162,7 @@ class VacationUpdateView(LoginRequiredMixin, UpdateView):
     success_url = "/vacation"
     
     def form_valid(self, form):
-        print("HERE")
-        form.instance.status = self.kwargs.get("status")
+        form.instance.status = self.request.POST["status"]
         return super(VacationUpdateView, self).form_valid(form)
 
     def get_object(self):
