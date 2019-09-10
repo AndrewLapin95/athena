@@ -1,13 +1,7 @@
-<form method="POST" action="{% url 'update-vacation' vacation=vacation_id status=new_status %}">
+<form method="POST" action="{% url 'update-vacation' vacation=vacation_id %}">
     {% csrf_token %}
     <div class="dropdown-menu dropdown-menu-right">
-        {% if new_status == "approve" %}
-            <button data-target="#approve_leave" data-toggle="modal" class="dropdown-item" type='submit'><i class="fa fa-dot-circle-o text-success"></i> Approve</button>
-        {% endif %}
-
-        {% if new_status == "decline" %}
-            <button data-toggle="modal" class="dropdown-item" type='submit'><i class="fa fa-dot-circle-o text-danger"></i> Decline</button>
-        {% endif %}
-        
+        <button name="status" value="decline" data-toggle="modal" class="dropdown-item" type='submit'><i class="fa fa-dot-circle-o text-danger"></i> Decline</button>
+        <button name="status" value="approve" data-target="#approve_leave" data-toggle="modal" class="dropdown-item" type='submit'><i class="fa fa-dot-circle-o text-success"></i> Approve</button>
     </div>
 </form>

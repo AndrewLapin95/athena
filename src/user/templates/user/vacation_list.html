@@ -51,10 +51,10 @@
                                             <a class="btn btn-white btn-sm btn-rounded" href="javascript:void(0);">
                                                 {% if object.status == "new" %}
                                                     <i class="fa fa-dot-circle-o text-purple"></i> New
-                                                {% elif object.status == "approve" %}
-                                                    <i class="fa fa-dot-circle-o text-success"></i> Approved</a>
                                                 {% elif object.status == "decline" %}
                                                     <i class="fa fa-dot-circle-o text-danger"> Declined</i>
+                                                {% elif object.status == "approve" %}
+                                                    <i class="fa fa-dot-circle-o text-success"></i> Approved
                                                 {% endif %}
                                             </a>
                                         </div>
@@ -62,11 +62,20 @@
                                 {% elif user.userprofile.role  == "MANAGER" %}
                                 <td class="text-center">
                                     <div class="dropdown action-label">
-                                        <a class="btn btn-white btn-sm btn-rounded dropdown-toggle" href="#" data-toggle="dropdown" aria-expanded="false">
-                                            <i class="fa fa-dot-circle-o text-purple"></i> New
-                                        </a>
-                                        {% include 'user/vacation_update.html' with vacation_id=object.id new_status="approve" %}
-                                        {% include 'user/vacation_update.html' with vacation_id=object.id new_status="decline" %}
+                                        {% if object.status == "new" %}
+                                            <a class="btn btn-white btn-sm btn-rounded dropdown-toggle" href="#" data-toggle="dropdown" aria-expanded="false">
+                                                <i class="fa fa-dot-circle-o text-purple"></i> New
+                                            </a>
+                                        {% elif object.status == "decline" %}
+                                            <a class="btn btn-white btn-sm btn-rounded dropdown-toggle" href="#" data-toggle="dropdown" aria-expanded="false">
+                                                <i class="fa fa-dot-circle-o text-danger"></i> Declined
+                                            </a>
+                                        {% elif object.status == "approve" %}
+                                            <a class="btn btn-white btn-sm btn-rounded dropdown-toggle" href="#" data-toggle="dropdown" aria-expanded="false">
+                                                <i class="fa fa-dot-circle-o text-success"></i> Approved
+                                            </a>
+                                        {% endif %}
+                                        {% include 'user/vacation_update.html' with vacation_id=object.id %}
                                     </div>
                                 </td>
 									
