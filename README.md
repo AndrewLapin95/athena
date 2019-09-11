@@ -23,3 +23,6 @@ Athena can be accessed at http://athena-hrmanagement.com/ with the following cre
 
  Password: john-doe-1234
  ```
+
+ ### References
+ The following [template](https://themeforest.net/item/smarthr-bootstrap-admin-panel-template/21153150) was re-used to build Athena.
