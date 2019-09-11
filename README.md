@@ -16,6 +16,10 @@ Athena is a basic HR management system that displays basic information about emp
 
 ## For Website Access
 Athena can be accessed at http://athena-hrmanagement.com/ with the following credentials (employee level access):
-> Company Alias: athena
-> Username: john-doe
-> Password: john-doe-1234
+```
+ Company Alias: athena
+
+ Username: john-doe
+
+ Password: john-doe-1234
+ ```
