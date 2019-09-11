@@ -86,3 +86,9 @@ local_settings.py
 **/migrations
 .env
 db.sqlite3
+
+### Google Cloud Platform ###
+
+src/app.yaml
+src/.gcloudignore
+src/cloud_sql_proxy
