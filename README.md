@@ -4,7 +4,7 @@ Athena is a basic HR management system that displays basic information about emp
 
 
 *Main profile dashboard:*
-![alt text](<img src="https://storage.cloud.google.com/athena-project/screenshot1.png"></img> "Profile Page")
+![alt text](<img src="https://storage.cloud.google.com/athena-project/screenshot1.png" /> "Profile Page")
 
 
 *Vacation request page:*
