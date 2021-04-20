@@ -31,7 +31,7 @@ parse-type==0.4.2
 pbr==5.1.1
 pluggy==0.8.1
 psycopg2==2.8.2
-py==1.7.0
+py==1.10.0
 pylint==2.1.1
 pylint-django==2.0.8
 pylint-plugin-utils==0.5
